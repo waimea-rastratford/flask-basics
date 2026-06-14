@@ -1,0 +1,13 @@
+{%extends "pages/_base.jinja"%}
+
+{% block content%}
+<h1>Page for Thing No. {{ id}} </h1>
+
+<p>We have got this id from the URL</p>
+
+{% if id == 67 %}
+<h2> OMG! Are you still doing 67</h2>
+
+{% endif%}
+
+{% endblock%}

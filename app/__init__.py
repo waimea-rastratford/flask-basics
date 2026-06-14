@@ -9,6 +9,21 @@ from dotenv import load_dotenv
 # Create the app
 app = Flask(__name__)
 
+cats = [
+    {
+        "id": 13,
+        "name": "Mr Bigglesworth"
+    },
+     {
+        "id": 7,
+        "name": "Barry"
+    },
+     {
+        "id": 123,
+        "name": "Mr Carrot"
+    }
+    ]
+
 
 #===========================================================
 # App Routes Handlers
@@ -19,8 +34,31 @@ app = Flask(__name__)
 #-----------------------------------------------------------
 @app.get("/")
 def show_welcome():
-    return "Hello!"
+    return render_template("pages/home.jinja")
 
+#-----------------------------------------------------------
+# Demo
+#-----------------------------------------------------------
+@app.get("/demo")
+def show_demo_message():
+    return render_template("pages/demo.jinja")
+
+#-----------------------------------------------------------
+# Matching an ID
+#-----------------------------------------------------------
+@app.get("/thing/<int:id>")
+def show_message_with_list(id):
+    print(f"Found ID: {id}")
+    return render_template("pages/id.jinja", id=id) 
+
+#-----------------------------------------------------------
+# Lists of data
+#-----------------------------------------------------------
+@app.get("/list")
+def show_message_with_id():
+
+    
+    return render_template("pages/list.jinja", cats=cats)  
 
 #===========================================================
 # Configure the app
