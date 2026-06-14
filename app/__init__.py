@@ -25,6 +25,8 @@ cats = [
     ]
 
 
+def get_cat(id):
+    return next((item for item in cats if item[id] == id), None)
 #===========================================================
 # App Routes Handlers
 #===========================================================
@@ -54,11 +56,11 @@ def show_message_with_list(id):
 #-----------------------------------------------------------
 # Lists of data
 #-----------------------------------------------------------
-@app.get("/list")
+@app.get("/cats")
 def show_message_with_id():
 
     
-    return render_template("pages/list.jinja", cats=cats)  
+    return render_template("pages/cats.jinja", cats=cats)  
 
 #===========================================================
 # Configure the app
