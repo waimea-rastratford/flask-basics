@@ -12,21 +12,23 @@ app = Flask(__name__)
 cats = [
     {
         "id": 13,
-        "name": "Mr Bigglesworth"
+        "name": "Mr Bigglesworth",
+        "image": "Bigglesworth.png"
     },
      {
         "id": 7,
-        "name": "Barry"
+        "name": "Barry",
+        "image": "Barry.png"
     },
      {
         "id": 123,
-        "name": "Mr Carrot"
-    }
-    ]
-
+        "name": "Mr Carrot",
+        "image": "MrCarrot.png"
+     }
+]
 
 def get_cat(id):
-    return next((item for item in cats if item[id] == id), None)
+    return next((item for item in cats if item["id"] == id), None)
 #===========================================================
 # App Routes Handlers
 #===========================================================
@@ -62,6 +64,19 @@ def show_message_with_id():
     
     return render_template("pages/cats.jinja", cats=cats)  
 
+
+
+#-----------------------------------------------------------
+# Specific cat
+#-----------------------------------------------------------
+@app.get("/cat/<int:id>")
+def show_a_cat(id):
+    cat = get_cat(id)
+
+    if cat:
+        return render_template("pages/cat.jinja", cat=cat)
+    else: 
+        abort(404)
 #===========================================================
 # Configure the app
 #===========================================================

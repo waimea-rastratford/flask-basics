@@ -1,8 +1,18 @@
 body {
     font-family: system-ui;
-    color:hotpink;
-
+    color:rgb(236, 57, 147);
+    background-color: rgb(255, 137, 202);
+    
 
 }
 
+header {
+    background-color: rgb(219, 17, 234);
+    display: flex;
+    color: rgb(236, 57, 147);
+}
+
+a {
+    color: rgb(222, 27, 124)
+}
 
